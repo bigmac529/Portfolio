@@ -12,6 +12,10 @@
     {
       "label": "GitHub",
       "url": "https://github.com/bigmac529"
+    },
+    {
+      "label": "SnakeGame",
+      "url": "https://snakegame.socha3.com/"
     }
   ],
   "skills": [
@@ -905,21 +909,21 @@
       "year": "2005 - 2010",
       "location": "Duluth, MN",
       "highlights": [
-        "Graduated Summa Cum Laude; top GPA in departments and on Dean’s List every semester.",
+        "Graduated Summa Cum Laude; top GPA in departments and on Dean\u2019s List every semester.",
         "Cumulative GPA: 3.85",
         "Additional major in Spanish with minors in Management and Russian."
       ],
       "studyAbroad": [
-        "Chilean Culture Course (Jan 2010) – Valparaiso, Chile",
-        "Russian Language Camp (Jun–Jul 2008) – Petrozavodsk, Russia",
-        "Mexico Missions Trip (May–Aug 2006) – Tlaxiaco, Mexico"
+        "Chilean Culture Course (Jan 2010) \u2013 Valparaiso, Chile",
+        "Russian Language Camp (Jun\u2013Jul 2008) \u2013 Petrozavodsk, Russia",
+        "Mexico Missions Trip (May\u2013Aug 2006) \u2013 Tlaxiaco, Mexico"
       ],
       "organizations": [
-        "Div. II Football (Aug 2008 – Sep 2009)",
-        "Cross Country (Aug – Nov 2007)",
-        "Spanish Tutor (Sep – Dec 2009)",
-        "Intervarsity Christian Fellowship Praise Band & Board Member (Sep 2006 – Mar 2008)",
-        "Webmaster for The Cable (Oct 2006 – May 2007)"
+        "Div. II Football (Aug 2008 \u2013 Sep 2009)",
+        "Cross Country (Aug \u2013 Nov 2007)",
+        "Spanish Tutor (Sep \u2013 Dec 2009)",
+        "Intervarsity Christian Fellowship Praise Band & Board Member (Sep 2006 \u2013 Mar 2008)",
+        "Webmaster for The Cable (Oct 2006 \u2013 May 2007)"
       ]
     }
   ]
