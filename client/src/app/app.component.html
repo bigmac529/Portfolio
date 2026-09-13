@@ -1,0 +1,171 @@
+<div class="min-h-screen text-white bg-[#070A12]">
+  <div class="pointer-events-none fixed inset-0 bg-grid opacity-25"></div>
+  <div class="pointer-events-none fixed -top-40 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full blur-3xl bg-gradient-to-tr from-fuchsia-500/35 via-cyan-500/25 to-emerald-500/20"></div>
+
+  <header class="relative z-10 mx-auto max-w-6xl px-6 py-6 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-2xl bg-white/10 ring-1 ring-white/15 backdrop-blur flex items-center justify-center font-semibold">MS</div>
+      <div class="leading-tight">
+        <div class="font-semibold tracking-tight">Michael Socha</div>
+        <div class="text-xs text-white/60">Angular 19 • ASP.NET Core 10.0 • Tailwind CSS</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 mx-auto max-w-6xl px-6 pb-24">
+    <ng-container *ngIf="svc.profile$ | async as p">
+      <section class="pt-2 md:pt-4">
+        <div class="grid md:grid-cols-12 gap-8 items-start">
+          <div class="md:col-span-7">
+            <div class="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1 text-xs text-white/80">
+              <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              detail-driven • full-stack • leadership
+            </div>
+            <h1 class="mt-5 text-4xl md:text-6xl font-semibold tracking-tight"> {{ p.headline }} </h1>
+            <p class="mt-3 text-lg md:text-xl text-white/70">
+              {{ p.location }}
+              <span class="text-white/40">• </span>
+              <a class="underline decoration-white/30 hover:decoration-white/70" [href]="'mailto:' + p.email">{{ p.email }}</a>
+            </p>
+            <p class="mt-6 text-white/70 leading-relaxed"> {{ p.summary }} </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a *ngFor="let link of p.links"
+                 class="rounded-2xl bg-white/10 ring-1 ring-white/15 px-5 py-3 font-medium
+                          hover:bg-white/15 transition focus:outline-none focus:ring-2 focus:ring-cyan-400/60"
+                 target="_blank"
+                 rel="noreferrer"
+                 [href]="link.url"> {{ link.label }} </a>
+              <a href="#experience"
+                 class="rounded-2xl bg-white/10 ring-1 ring-white/15 px-5 py-3 font-medium hover:bg-white/15 transition focus:outline-none focus:ring-2 focus:ring-cyan-400/60"> Experience </a>
+            </div>
+          </div>
+
+          <div class="md:col-span-5">
+            <div class="rounded-3xl bg-white/10 ring-1 ring-white/15 backdrop-blur p-6 shadow-2xl shadow-black/30">
+              <div class="flex items-center justify-between">
+                <div class="text-sm text-white/60">Profile snapshot</div>
+                <div class="text-xs text-white/50">what you’re about to read</div>
+              </div>
+              <div class="mt-5 grid gap-3">
+                <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
+                  <div class="text-sm font-medium">Who I am</div>
+                  <div class="text-sm text-white/65"> Senior full‑stack software engineer based in Minneapolis, pairing deep .NET and Angular experience with strong communication, mentoring, and cross‑team collaboration. </div>
+                </div>
+                <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
+                  <div class="text-sm font-medium">What I build</div>
+                  <div class="text-sm text-white/65"> Production systems across order management, finance, and insurance: high‑reliability web apps, APIs, and services on ASP.NET Core, Angular, SQL Server, and Azure. </div>
+                </div>
+                <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
+                  <div class="text-sm font-medium">How I work</div>
+                  <div class="text-sm text-white/65"> Blend of architectural thinking and hands‑on delivery: domain‑driven design, refactoring legacy platforms, shaping data models, and partnering closely with business stakeholders. </div>
+                </div>
+                <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4 hover:bg-white/10 transition">
+                  <div class="text-sm font-medium">Career through‑line</div>
+                  <div class="text-sm text-white/65"> A steady progression from help desk and Java intern to senior engineer across healthcare, legal, and manufacturing — consistently owning complex, business-critical systems end-to-end. </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-10">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <h2 class="text-2xl font-semibold">Skills</h2>
+            <button type="button"
+                    class="text-xs rounded-full bg-white/10 ring-1 ring-white/20 px-3 py-1 text-white/75 hover:bg-white/15 transition"
+                    (click)="toggleTopSkills()">
+              {{ showTopSkillsOnly() ? 'Show all skills' : 'Show top 5 per group' }}
+            </button>
+          </div>
+          <div class="flex flex-col items-start md:items-end gap-2 md:gap-3">
+            <div class="flex items-center gap-2">
+              <div class="text-sm text-white/55"> filtering: <span class="text-white/75">{{ skillFilter() || 'none' }}</span></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="text"
+                     placeholder="Filter skills (e.g. Angular, SQL, Azure)"
+                     class="hidden md:block w-72 rounded-2xl bg-white/5 ring-1 ring-white/10 px-4 py-2 text-sm placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-cyan-400/60"
+                     [value]="skillFilter()"
+                     (input)="onSkillFilter($event)" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 grid md:grid-cols-2 gap-4">
+          <article *ngFor="let group of filteredSkillGroups(p.skills)"
+                   class="rounded-3xl bg-white/10 ring-1 ring-white/15 p-6 hover:bg-white/15 transition">
+            <div class="text-sm text-white/60">{{ group.name }}</div>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span *ngFor="let item of group.items"
+                    class="rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1 text-xs text-white/75
+             hover:bg-white/10 transition cursor-default"> {{ item.label }} </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="mt-14">
+        <h2 class="text-2xl font-semibold">Experience</h2>
+        <div class="mt-6 space-y-4">
+          <article *ngFor="let role of p.experience"
+                   class="rounded-3xl bg-white/10 ring-1 ring-white/15 p-6 hover:bg-white/15 transition">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <div class="text-lg font-semibold">{{ role.title }}</div>
+                <div class="text-white/70">{{ role.company }} <span class="text-white/40">•</span> {{ role.location }}</div>
+              </div>
+              <div class="text-sm text-white/60">{{ role.start }} — {{ role.end || 'Present' }}</div>
+            </div>
+            <ul class="mt-4 space-y-2 text-white/75 list-disc list-inside">
+              <li *ngFor="let bullet of role.bullets">{{ bullet }}</li>
+            </ul>
+            <div *ngIf="role.tech.length" class="mt-4 flex flex-wrap gap-2">
+              <span *ngFor="let tech of role.tech"
+                    class="rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1 text-xs text-white/70"> {{ tech }} </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-14">
+        <h2 class="text-2xl font-semibold">Education</h2>
+        <div class="mt-6 grid gap-4">
+          <div *ngFor="let edu of p.education"
+               class="rounded-3xl bg-white/10 ring-1 ring-white/15 p-6 hover:bg-white/15 transition">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <div class="text-lg font-semibold">{{ edu.school }}</div>
+                <div class="text-white/70">{{ edu.degree }}</div>
+              </div>
+              <div class="text-sm text-white/60">{{ edu.year }} • {{ edu.location }}</div>
+            </div>
+            <ul class="mt-4 space-y-2 text-white/75 list-disc list-inside">
+              <li *ngFor="let highlight of edu.highlights">{{ highlight }}</li>
+            </ul>
+            <div class="mt-6 grid md:grid-cols-2 gap-4">
+              <div *ngIf="edu.studyAbroad.length > 0" class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4">
+                <div class="text-sm font-medium">Study Abroad</div>
+                <ul class="mt-2 space-y-1 text-sm text-white/70 list-disc list-inside">
+                  <li *ngFor="let item of edu.studyAbroad">{{ item }}</li>
+                </ul>
+              </div>
+              <div *ngIf="edu.organizations.length > 0" class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-4">
+                <div class="text-sm font-medium">Organizations</div>
+                <ul class="mt-2 space-y-1 text-sm text-white/70 list-disc list-inside">
+                  <li *ngFor="let item of edu.organizations">{{ item }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </ng-container>
+  </main>
+
+  <footer class="relative z-10 border-t border-white/10">
+    <div class="mx-auto max-w-6xl px-6 py-8 text-sm text-white/55">
+      Built with Angular 19 • ASP.NET Core 10.0 • Tailwind CSS
+    </div>
+  </footer>
+</div>

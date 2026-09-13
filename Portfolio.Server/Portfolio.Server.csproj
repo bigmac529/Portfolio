@@ -1,53 +1,26 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <SpaRoot>..\Portfolio.client</SpaRoot>
+    <AssemblyName>Portfolio.Server</AssemblyName>
+    <RootNamespace>Portfolio.Server</RootNamespace>
+    <Company>Socha3</Company>
+    <Product>Portfolio.Server</Product>
+    <ProjectGuid>{972ec1cd-f27a-4626-8e72-9569d8ba7d47}</ProjectGuid>
+    <SpaRoot>..\client\</SpaRoot>
+    <SpaProxyServerUrl>http://localhost:4200</SpaProxyServerUrl>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
-    <SpaProxyServerUrl>https://localhost:4200</SpaProxyServerUrl>
-    <Version>9.19.0</Version>
-    <Company>www.ebenmonney.com</Company>
-    <Authors>$(Company)</Authors>
-    <Description>ASPNET Core 9.0 - Angular 19 startup template for Quick Application Development</Description>
-    <Copyright>Copyright © 2024 www.ebenmonney.com</Copyright>
-    <PackageProjectUrl>https://www.ebenmonney.com/quickapp</PackageProjectUrl>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-    <PackageReference Include="MailKit" Version="4.8.0" />
-    <PackageReference Include="OpenIddict.AspNetCore" Version="5.8.0" />
-    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="5.8.0" />
-    <PackageReference Include="OpenIddict.Quartz" Version="5.8.0" />
-    <PackageReference Include="Quartz.Extensions.Hosting" Version="3.13.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="10.0.1" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="9.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
-      <Version>9.*-*</Version>
-    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
   </ItemGroup>
-
-  <ItemGroup>  
-    <ProjectReference Include="..\Portfolio.client\Portfolio.client.esproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="..\Portfolio.Core\Portfolio.Core.csproj" />
-  </ItemGroup>
-
   <ItemGroup>
-    <None Update="Services\Email\*.template">
+    <Content Update="profile.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
-
 </Project>
