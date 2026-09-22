@@ -14,8 +14,12 @@
       "url": "https://github.com/bigmac529"
     },
     {
-      "label": "SnakeGame",
-      "url": "https://snakegame.socha3.com/"
+        "label": "SnakeArcade",
+        "url": "https://snakearade.socha3.com/"
+    },
+    {
+        "label": "GigaGarageSale",
+        "url": "https://gigagaragesale.socha3.com/"
     }
   ],
   "skills": [
