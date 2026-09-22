@@ -1,0 +1,934 @@
+{
+  "name": "Michael Socha",
+  "location": "Minneapolis, MN",
+  "email": "michael@socha3.com",
+  "headline": "Full-Stack Senior Software Engineer",
+  "summary": "Technically solid and detail-focused full-stack Senior Software Engineer adept in AI prompt engineering, including hands-on GitHub Copilot prompt engineering and agent orchestration. Creative problem solver and clever out-of-the-box thinker with a deep understanding of the full range of technologies that a software shop depends on to run the business. Proficient communicator and leader with gregarious hard-working personality.",
+  "links": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/socha3/"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/bigmac529"
+    },
+    {
+        "label": "SnakeArcade",
+        "url": "https://snakearade.socha3.com/"
+    },
+    {
+        "label": "GigaGarageSale",
+        "url": "https://gigagaragesale.socha3.com/"
+    }
+  ],
+  "skills": [
+    {
+      "name": "AI & Developer Productivity",
+      "items": [
+        {
+          "label": "GitHub Copilot prompt engineering",
+          "signal": 8
+        },
+        {
+          "label": "Claude prompt engineering",
+          "signal": 8
+        },
+        {
+          "label": "AI-assisted development workflows",
+          "signal": 8
+        },
+        {
+          "label": "Agent orchestration",
+          "signal": 8
+        }
+      ]
+    },
+    {
+      "name": "Programming Languages & Scripting",
+      "items": [
+        {
+          "label": "C#",
+          "signal": 10
+        },
+        {
+          "label": "JavaScript",
+          "signal": 10
+        },
+        {
+          "label": "TypeScript",
+          "signal": 10
+        },
+        {
+          "label": "T-SQL",
+          "signal": 9
+        },
+        {
+          "label": "SQL (relational databases)",
+          "signal": 9
+        },
+        {
+          "label": "X++",
+          "signal": 5
+        },
+        {
+          "label": "Java",
+          "signal": 6
+        },
+        {
+          "label": "PHP",
+          "signal": 4
+        },
+        {
+          "label": "C++",
+          "signal": 4
+        },
+        {
+          "label": "Visual Basic / VB.NET",
+          "signal": 3
+        },
+        {
+          "label": "VBScript",
+          "signal": 2
+        },
+        {
+          "label": "Python",
+          "signal": 7
+        },
+        {
+          "label": "PowerShell",
+          "signal": 8
+        },
+        {
+          "label": "Bash / Shell scripting",
+          "signal": 6
+        },
+        {
+          "label": "xHTML/XML/XSLT",
+          "signal": 5
+        },
+        {
+          "label": "JSON",
+          "signal": 8
+        },
+        {
+          "label": "YAML",
+          "signal": 6
+        },
+        {
+          "label": "Markdown",
+          "signal": 5
+        },
+        {
+          "label": "Regex",
+          "signal": 7
+        },
+        {
+          "label": "Shell scripting for CI/CD (Bash/PowerShell in pipelines)",
+          "signal": 8
+        }
+      ]
+    },
+    {
+      "name": ".NET & Backend Frameworks",
+      "items": [
+        {
+          "label": ".NET (Framework, .NET Core, .NET 5+ / .NET 8 / .NET 10-ready)",
+          "signal": 10
+        },
+        {
+          "label": "ASP.NET Core",
+          "signal": 10
+        },
+        {
+          "label": "ASP.NET Core MVC",
+          "signal": 9
+        },
+        {
+          "label": "ASP.NET Core Web API",
+          "signal": 10
+        },
+        {
+          "label": "ASP.NET Razor Pages",
+          "signal": 8
+        },
+        {
+          "label": "ASP.NET MVC (classic)",
+          "signal": 6
+        },
+        {
+          "label": "ASP.NET WebForms",
+          "signal": 4
+        },
+        {
+          "label": "Entity Framework",
+          "signal": 8
+        },
+        {
+          "label": "Entity Framework Core",
+          "signal": 10
+        },
+        {
+          "label": "LINQ",
+          "signal": 9
+        },
+        {
+          "label": "Background services & hosted services",
+          "signal": 7
+        },
+        {
+          "label": "Middleware design",
+          "signal": 8
+        },
+        {
+          "label": "Dependency Injection (Microsoft.Extensions.DependencyInjection)",
+          "signal": 9
+        },
+        {
+          "label": "Configuration & options pattern",
+          "signal": 8
+        },
+        {
+          "label": "Logging & diagnostics (ILogger, log4net, Serilog exposure)",
+          "signal": 8
+        },
+        {
+          "label": "Asynchronous programming (async/await, Tasks)",
+          "signal": 9
+        },
+        {
+          "label": "REST API design & implementation",
+          "signal": 10
+        },
+        {
+          "label": "WCF (legacy support)",
+          "signal": 4
+        },
+        {
+          "label": "Windows Services and worker processes",
+          "signal": 5
+        }
+      ]
+    },
+    {
+      "name": "Frontend Frameworks & Web Technologies",
+      "items": [
+        {
+          "label": "Angular (10+)",
+          "signal": 10
+        },
+        {
+          "label": "SPA architecture",
+          "signal": 9
+        },
+        {
+          "label": "HTML5",
+          "signal": 9
+        },
+        {
+          "label": "CSS3",
+          "signal": 8
+        },
+        {
+          "label": "Responsive web design",
+          "signal": 8
+        },
+        {
+          "label": "Bootstrap",
+          "signal": 7
+        },
+        {
+          "label": "SCSS/SASS/LESS",
+          "signal": 7
+        },
+        {
+          "label": "RxJS",
+          "signal": 8
+        },
+        {
+          "label": "TypeScript tooling (tsconfig, linting, build)",
+          "signal": 8
+        },
+        {
+          "label": "JavaScript modularization and bundling",
+          "signal": 8
+        },
+        {
+          "label": "REST/JSON-based front-end integration",
+          "signal": 9
+        },
+        {
+          "label": "Client-side form validation",
+          "signal": 7
+        },
+        {
+          "label": "Cross-browser compatibility considerations",
+          "signal": 6
+        }
+      ]
+    },
+    {
+      "name": "Cloud, Hosting & DevOps",
+      "items": [
+        {
+          "label": "Azure (App Services, Storage, Service Bus, Azure SQL)",
+          "signal": 10
+        },
+        {
+          "label": "Azure Service Bus",
+          "signal": 9
+        },
+        {
+          "label": "Azure DevOps Boards",
+          "signal": 7
+        },
+        {
+          "label": "Azure DevOps Repos",
+          "signal": 8
+        },
+        {
+          "label": "Azure DevOps Pipelines (CI/CD)",
+          "signal": 9
+        },
+        {
+          "label": "Build and release pipelines",
+          "signal": 9
+        },
+        {
+          "label": "Docker (containerizing .NET and Node/Angular apps)",
+          "signal": 8
+        },
+        {
+          "label": "Kubernetes / k8s concepts (deploying microservices)",
+          "signal": 7
+        },
+        {
+          "label": "Configuration-as-code for pipelines",
+          "signal": 8
+        },
+        {
+          "label": "IIS configuration & deployment",
+          "signal": 7
+        },
+        {
+          "label": "Windows Server administration",
+          "signal": 6
+        },
+        {
+          "label": "Application monitoring & logging in production",
+          "signal": 8
+        },
+        {
+          "label": "Environment configuration (Dev/Test/Prod)",
+          "signal": 7
+        }
+      ]
+    },
+    {
+      "name": "Architecture, Patterns & Practices",
+      "items": [
+        {
+          "label": "Domain-Driven Design (DDD)",
+          "signal": 9
+        },
+        {
+          "label": "Layered and hexagonal architectures",
+          "signal": 8
+        },
+        {
+          "label": "Microservices architecture",
+          "signal": 9
+        },
+        {
+          "label": "SOLID principles",
+          "signal": 10
+        },
+        {
+          "label": "Clean code practices",
+          "signal": 9
+        },
+        {
+          "label": "Refactoring legacy applications",
+          "signal": 8
+        },
+        {
+          "label": "Event-driven and message-based architectures",
+          "signal": 8
+        },
+        {
+          "label": "Inversion of Control (IoC) / Dependency Injection",
+          "signal": 9
+        },
+        {
+          "label": "Repository & Unit Of Work patterns",
+          "signal": 8
+        },
+        {
+          "label": "CQRS (exposure/experience)",
+          "signal": 6
+        },
+        {
+          "label": "Caching strategies",
+          "signal": 8
+        },
+        {
+          "label": "Error handling & resiliency",
+          "signal": 9
+        },
+        {
+          "label": "Code review and mentoring",
+          "signal": 8
+        },
+        {
+          "label": "Technical design and solution architecture",
+          "signal": 9
+        }
+      ]
+    },
+    {
+      "name": "Databases & Data Access",
+      "items": [
+        {
+          "label": "SQL Server",
+          "signal": 10
+        },
+        {
+          "label": "T-SQL stored procedures, views, functions",
+          "signal": 9
+        },
+        {
+          "label": "Database schema design & normalization",
+          "signal": 9
+        },
+        {
+          "label": "Query optimization and indexing",
+          "signal": 9
+        },
+        {
+          "label": "Entity Framework / EF Core data modeling",
+          "signal": 9
+        },
+        {
+          "label": "MySQL",
+          "signal": 6
+        },
+        {
+          "label": "DB2 SQL (exposure/legacy support)",
+          "signal": 4
+        },
+        {
+          "label": "AS400 / iSeries database concepts",
+          "signal": 4
+        },
+        {
+          "label": "ORMs (Entity Framework, Fluent NHibernate)",
+          "signal": 7
+        },
+        {
+          "label": "Database migration strategies",
+          "signal": 8
+        }
+      ]
+    },
+    {
+      "name": "Messaging, Integration & APIs",
+      "items": [
+        {
+          "label": "RESTful APIs (design, versioning, documentation)",
+          "signal": 10
+        },
+        {
+          "label": "SOAP (legacy integration)",
+          "signal": 4
+        },
+        {
+          "label": "WCF services (legacy support)",
+          "signal": 4
+        },
+        {
+          "label": "IBM MQ",
+          "signal": 5
+        },
+        {
+          "label": "Azure Service Bus messaging",
+          "signal": 9
+        },
+        {
+          "label": "Message-based integration patterns",
+          "signal": 8
+        },
+        {
+          "label": "Webhooks",
+          "signal": 6
+        },
+        {
+          "label": "Swagger / OpenAPI",
+          "signal": 8
+        },
+        {
+          "label": "Authentication & authorization flows (JWT, OAuth2, OpenID Connect)",
+          "signal": 9
+        },
+        {
+          "label": "Auth0",
+          "signal": 7
+        },
+        {
+          "label": "API gateway and routing concepts",
+          "signal": 7
+        }
+      ]
+    },
+    {
+      "name": "Tools & Platforms",
+      "items": [
+        {
+          "label": "Visual Studio",
+          "signal": 10
+        },
+        {
+          "label": "Visual Studio Code",
+          "signal": 8
+        },
+        {
+          "label": "SQL Server Management Studio (SSMS)",
+          "signal": 8
+        },
+        {
+          "label": "Git",
+          "signal": 10
+        },
+        {
+          "label": "Azure DevOps",
+          "signal": 9
+        },
+        {
+          "label": "TFS",
+          "signal": 4
+        },
+        {
+          "label": "SVN",
+          "signal": 3
+        },
+        {
+          "label": "Node.js (tooling & backend)",
+          "signal": 7
+        },
+        {
+          "label": "NPM package management",
+          "signal": 7
+        },
+        {
+          "label": "MSBuild",
+          "signal": 7
+        },
+        {
+          "label": "IIS",
+          "signal": 7
+        },
+        {
+          "label": "Windows Server",
+          "signal": 6
+        },
+        {
+          "label": "DevExpress",
+          "signal": 5
+        },
+        {
+          "label": "Kendo UI",
+          "signal": 6
+        },
+        {
+          "label": "MorphX - Dynamics AX 2012",
+          "signal": 5
+        },
+        {
+          "label": "Microsoft Office",
+          "signal": 3
+        }
+      ]
+    },
+    {
+      "name": "Testing, Quality & Delivery",
+      "items": [
+        {
+          "label": "Unit testing in .NET (xUnit / NUnit / MSTest exposure)",
+          "signal": 9
+        },
+        {
+          "label": "Integration testing of APIs and services",
+          "signal": 9
+        },
+        {
+          "label": "Test-driven development (TDD exposure/practice)",
+          "signal": 7
+        },
+        {
+          "label": "Mocking frameworks (Moq)",
+          "signal": 8
+        },
+        {
+          "label": "Code coverage and quality metrics",
+          "signal": 7
+        },
+        {
+          "label": "Continuous Integration (CI)",
+          "signal": 9
+        },
+        {
+          "label": "Continuous Delivery/Deployment (CD)",
+          "signal": 9
+        },
+        {
+          "label": "Deployment pipelines and release gates",
+          "signal": 8
+        },
+        {
+          "label": "Peer code reviews and standards enforcement",
+          "signal": 8
+        }
+      ]
+    },
+    {
+      "name": "Security, Performance & Reliability",
+      "items": [
+        {
+          "label": "Authentication & authorization in ASP.NET Core",
+          "signal": 10
+        },
+        {
+          "label": "Role-based and claims-based security",
+          "signal": 9
+        },
+        {
+          "label": "Secure coding practices (OWASP awareness)",
+          "signal": 9
+        },
+        {
+          "label": "Input validation & output encoding",
+          "signal": 8
+        },
+        {
+          "label": "Secrets management (Key Vault, configuration providers)",
+          "signal": 8
+        },
+        {
+          "label": "HTTPS, TLS and certificate basics",
+          "signal": 7
+        },
+        {
+          "label": "Performance profiling and tuning",
+          "signal": 8
+        },
+        {
+          "label": "SQL performance tuning",
+          "signal": 8
+        },
+        {
+          "label": "Caching (in-memory and distributed, Redis exposure)",
+          "signal": 8
+        },
+        {
+          "label": "Resilient HTTP calls (retries, timeouts, circuit breakers with Polly)",
+          "signal": 8
+        },
+        {
+          "label": "Logging & monitoring strategies",
+          "signal": 8
+        }
+      ]
+    },
+    {
+      "name": "Legacy & Desktop Technologies",
+      "items": [
+        {
+          "label": "WinForms",
+          "signal": 6
+        },
+        {
+          "label": "WPF",
+          "signal": 7
+        },
+        {
+          "label": "Silverlight (legacy support)",
+          "signal": 3
+        },
+        {
+          "label": "WebForms maintenance and modernization",
+          "signal": 5
+        },
+        {
+          "label": "Windows desktop deployment considerations",
+          "signal": 4
+        }
+      ]
+    },
+    {
+      "name": "Processes & Collaboration",
+      "items": [
+        {
+          "label": "Agile / Scrum",
+          "signal": 9
+        },
+        {
+          "label": "Requirements gathering & refinement",
+          "signal": 8
+        },
+        {
+          "label": "Stakeholder communication",
+          "signal": 9
+        },
+        {
+          "label": "Technical documentation",
+          "signal": 7
+        },
+        {
+          "label": "Mentoring and onboarding developers",
+          "signal": 8
+        },
+        {
+          "label": "Cross-team collaboration (Product, QA, Ops, Business)",
+          "signal": 8
+        }
+      ]
+    },
+    {
+      "name": "Spoken Languages",
+      "items": [
+        {
+          "label": "English (written/spoken)",
+          "signal": 10
+        },
+        {
+          "label": "Spanish (written/spoken)",
+          "signal": 8
+        },
+        {
+          "label": "Russian (menial)",
+          "signal": 3
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "Protolabs",
+      "location": "Maple Plain, MN",
+      "start": "2018-11",
+      "end": "Present",
+      "bullets": [
+        "As a member of the Corporate Systems team, I create and maintain core company payment and order processing systems including extensive ERP functionalities.",
+        "Collaborate closely with the Shipping, Manufacturing and e-Commerce dev teams",
+        "Continuously modernizing the development workflow with AI-assisted tools and practices.",
+        "Transformed credit card processing, ERP, order management and reporting and shipping and manufacturing operations software."
+      ],
+      "tech": [
+        "C#",
+        "X++",
+        "T-SQL",
+        "Typescript/Javascript",
+        "Angular",
+        "EntityFramework Core",
+        "Razor Pages",
+        "AspNetCore WebAPI (microservice/k8s)",
+        "Azure Service Bus",
+        "WinForms",
+        "Powershell automation",
+        "Domain-driven design"
+      ]
+    },
+    {
+      "title": "Software Engineer",
+      "company": "American Registry of Radiologic Technologists",
+      "location": "St. Paul, MN",
+      "start": "2016-10",
+      "end": "2018-08",
+      "bullets": [
+        "Created and enhanced multiple web portals using .NET WebForms, WCF, Entity Framework, DevExpress.",
+        "Advanced abilities in requirements gathering, stakeholder communication and architectural design.",
+        "Restructured legacy AS400 database structures and upgraded core company infrastructures.",
+        "Modernized company subsidiary information platform to integrate into parent company standards."
+      ],
+      "tech": [
+        "C#",
+        "ASP.NET WebForms",
+        "WCF",
+        "Entity Framework",
+        "DevExpress",
+        "AS400",
+        "SQL"
+      ]
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": "MN Lawyers Mutual Insurance",
+      "location": "Minneapolis, MN",
+      "start": "2014-08",
+      "end": "2016-09",
+      "bullets": [
+        "Created dashboard application with Node.js, Angular 2, MVC5, KendoUI, WebAPI2 and EF6 for DevOps.",
+        "Restructured legacy underwriting, claims and application systems using WPF, WinForms and WebForms.",
+        "Responded to user feature requests and production issues as business processes evolved.",
+        "Architected new foundation for future development utilizing IoC and CastleWindsor.",
+        "Implemented custom libraries wrapping MSBuild and log4net to enhance new applications."
+      ],
+      "tech": [
+        "Node.js",
+        "Angular",
+        "ASP.NET MVC",
+        "WebAPI",
+        "Entity Framework",
+        "Kendo UI",
+        "WPF",
+        "Castle Windsor",
+        "MSBuild",
+        "log4net"
+      ]
+    },
+    {
+      "title": "Software Engineer Consultant",
+      "company": "Surescripts",
+      "location": "Minneapolis, MN",
+      "start": "2014-02",
+      "end": "2014-05",
+      "bullets": [
+        "Created notification system for healthcare insurance managers with patient location of care details.",
+        "Integrated a C#/.NET and Java messaging system platform independent Messaging & Queuing (IBM MQ).",
+        "Facilitated software component maintainability through inversion of control utilizing Castle Windsor.",
+        "Improved database access via Fluent NHibernate ORM for saving outgoing message components.",
+        "Consumed Java web services with Apache CXF and JAX-B implementations of JAX-RS."
+      ],
+      "tech": [
+        "C#",
+        "Java",
+        "IBM MQ",
+        "Castle Windsor",
+        "Fluent NHibernate",
+        "Apache CXF",
+        "JAX-RS"
+      ]
+    },
+    {
+      "title": "Applications Developer",
+      "company": "UnitedHealthcare",
+      "location": "Minnetonka, MN",
+      "start": "2011-07",
+      "end": "2014-02",
+      "bullets": [
+        "Converted manual insurance plan maintenance processes to MVC web portal with Agile methodology.",
+        "Advanced skills in MVC (C#, .Net, SQL, VBA, jQuery and Business Rule Processing).",
+        "Gathered and documented requirements for new software features.",
+        "Designed database sections, maintained deploy processes and documented team procedures."
+      ],
+      "tech": [
+        "ASP.NET MVC",
+        "C#",
+        "SQL",
+        "VBA",
+        "jQuery"
+      ]
+    },
+    {
+      "title": "1st Lieutenant - Signal Officer",
+      "company": "MN Army National Guard",
+      "location": "Faribault, MN",
+      "start": "2010-06",
+      "end": "2015-06",
+      "bullets": [
+        "Managed 20+ Soldiers and oversaw platoon operations.",
+        "Planned communication missions and ensured efficient training plans.",
+        "Supervised the maintenance of over $9,000,000 worth of equipment.",
+        "Gained leadership insights and personal courage."
+      ],
+      "tech": []
+    },
+    {
+      "title": "Freelance E-tail Web Developer",
+      "company": "Socha3.com",
+      "location": "Minneapolis, MN",
+      "start": "2009-02",
+      "end": "2011-02",
+      "bullets": [
+        "Launched Socha3.com, an online retailer with 12,000+ nutritional supplements and colognes.",
+        "Administered shipments, logistics, taxes and wholesale partnerships.",
+        "Built on WAMP with PHP, MySQL, jQuery, JavaScript, AJAX, XML and xHTML.",
+        "Fulfilled several orders a week for a national customer base."
+      ],
+      "tech": [
+        "PHP",
+        "MySQL",
+        "JavaScript",
+        "jQuery",
+        "AJAX",
+        "WAMP"
+      ]
+    },
+    {
+      "title": "Computer Help Desk Technician",
+      "company": "The College of St. Scholastica",
+      "location": "Duluth, MN",
+      "start": "2005-09",
+      "end": "2009-11",
+      "bullets": [
+        "Supported 5000+ students, faculty and staff with computer repair and technology services.",
+        "Served as Team Leader for over a year.",
+        "Trained new technicians and improved processes to increase efficiencies.",
+        "Employee of the Month (first in 2009)."
+      ],
+      "tech": []
+    },
+    {
+      "title": "Java Web Developer Intern",
+      "company": "Supervalu",
+      "location": "Eden Prairie, MN",
+      "start": "2007-06",
+      "end": "2007-08",
+      "bullets": [
+        "Assisted with streamlining the retail inventory system used by 100s of grocery stores.",
+        "Coded web applets with JSP, Java, JavaBeans and SQL.",
+        "Resolved production website errors.",
+        "Wrote SQL scripts to be used by teammates."
+      ],
+      "tech": [
+        "Java",
+        "JSP",
+        "SQL"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "M.S. in Software Engineering",
+      "school": "The University of St. Thomas",
+      "year": "2024 - 2028",
+      "location": "St. Paul, MN",
+      "highlights": [],
+      "studyAbroad": [],
+      "organizations": []
+    },
+    {
+      "degree": "B.A. in Computer Science/Information Systems",
+      "school": "The College of St. Scholastica",
+      "year": "2005 - 2010",
+      "location": "Duluth, MN",
+      "highlights": [
+        "Graduated Summa Cum Laude; top GPA in departments and on Dean\u2019s List every semester.",
+        "Cumulative GPA: 3.85",
+        "Additional major in Spanish with minors in Management and Russian."
+      ],
+      "studyAbroad": [
+        "Chilean Culture Course (Jan 2010) \u2013 Valparaiso, Chile",
+        "Russian Language Camp (Jun\u2013Jul 2008) \u2013 Petrozavodsk, Russia",
+        "Mexico Missions Trip (May\u2013Aug 2006) \u2013 Tlaxiaco, Mexico"
+      ],
+      "organizations": [
+        "Div. II Football (Aug 2008 \u2013 Sep 2009)",
+        "Cross Country (Aug \u2013 Nov 2007)",
+        "Spanish Tutor (Sep \u2013 Dec 2009)",
+        "Intervarsity Christian Fellowship Praise Band & Board Member (Sep 2006 \u2013 Mar 2008)",
+        "Webmaster for The Cable (Oct 2006 \u2013 May 2007)"
+      ]
+    }
+  ]
+}
