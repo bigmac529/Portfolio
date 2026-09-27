@@ -58,11 +58,21 @@ Browse http://localhost:4200.
 
 ```bash
 cd client
-npm install
+npm ci
 npm run build
-# Angular 19 application builder output:
+# Angular 19 application builder output (outputMode "static", prerendered):
 #   client/dist/client/browser/*
+#     index.html      <- "/" prerendered at build time with profile.json content baked in
+#     index.csr.html  <- plain client-only shell (not used by the server, harmless)
+#     robots.txt, sitemap.xml, og-image.png, favicon.ico, hashed main/polyfills/styles bundles
 ```
+
+The build prerenders the single page using `Portfolio.Server/profile.json` (imported at build
+time by `client/src/app/app.config.server.ts`), so crawlers and link-preview bots get the full
+content without running JavaScript. In the browser the app still fetches `/api/profile` and
+re-renders with the live data. **If you edit `profile.json`, rebuild the client and recopy
+`wwwroot`** so the static HTML (and search/preview snippets) stay in sync. No Node.js server is
+needed at runtime; the output is plain static files as before.
 
 ```bash
 # from Portfolio/
@@ -83,7 +93,22 @@ dotnet publish -c Release -r win-x64 --self-contained false -o ./publish
 
 4. IIS: AspNetCoreModuleV2, in-process, site root = publish folder. The app uses `UseDefaultFiles` + `MapStaticAssets` + `MapFallbackToFile("/index.html")` for SPA deep links.
 
+5. After deploying, purge the Cloudflare cache for `https://socha3.com/` (and `/index.html`)
+   so visitors and bots get the new HTML, then re-scrape link previews (see SEO below).
+
 Serilog file logs go to `Logs/log-{Date}.log` (see `appsettings.json` `Logging:PathFormat`).
+
+## SEO and link previews
+
+- `client/src/index.html`: title, meta description, canonical URL, Open Graph + Twitter card
+  tags, `theme-color`, and JSON-LD `Person` structured data (values taken from `profile.json`;
+  update them by hand if the name/headline/summary change).
+- `client/public/og-image.png`: 1200x630 link-preview card, generated from `profile.json` by
+  `client/scripts/generate-og-image.cjs` (`npm install --no-save sharp && node scripts/generate-og-image.cjs`).
+- `client/public/robots.txt` and `client/public/sitemap.xml` are copied to the site root by the build.
+- Verify: `curl -s https://socha3.com/ | grep -E 'og:|twitter:|ld\+json|Protolabs'`, then use
+  the LinkedIn Post Inspector (https://www.linkedin.com/post-inspector/) or
+  https://developers.facebook.com/tools/debug/ to refresh cached previews.
 
 ## API
 
