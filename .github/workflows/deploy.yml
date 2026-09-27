@@ -1,0 +1,178 @@
+name: Deploy
+
+# A merged pull request is a push to master, so this deploys every merge.
+# It can also be started by hand from the Actions tab (workflow_dispatch).
+# Never add pull_request triggers here: the deploy job runs on a self-hosted
+# runner on the production server and this repository is public.
+#
+# Same shape as bigmac529/GigaGarageSale's deploy workflow: build on a
+# GitHub-hosted runner, upload a package, then a self-hosted runner on the
+# socha3 Windows/IIS server downloads it and runs scripts/ci-deploy.ps1
+# (backup, app_offline.htm, mirror, health check, roll back on failure).
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One deploy at a time; a newer run waits for the current one instead of cancelling it.
+concurrency:
+  group: deploy-portfolio-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      deployable: ${{ steps.check.outputs.deployable }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      # The server's content root is a repository variable (Settings > Secrets and
+      # variables > Actions > Variables). Until it is set, runs build only and
+      # skip the deploy job, like GigaGarageSale's "deployable" check.
+      - name: Check the deploy target is configured
+        id: check
+        env:
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+        run: |
+          if [ -n "$DEPLOY_PATH" ] && [ -f scripts/ci-deploy.ps1 ]; then
+            echo "deployable=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Repository variable DEPLOY_PATH is not set (or scripts/ci-deploy.ps1 is missing); building only, the deploy job will be skipped. See README > Deploy."
+            echo "deployable=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install client dependencies
+        working-directory: client
+        run: npm ci --no-audit --no-fund
+
+      - name: Build client
+        working-directory: client
+        run: npm run build
+
+      # The committed wwwroot may be stale; always serve what was just built.
+      - name: Copy the client build into Portfolio.Server/wwwroot
+        run: |
+          set -euo pipefail
+          test -f client/dist/client/browser/index.html
+          rm -rf Portfolio.Server/wwwroot
+          mkdir -p Portfolio.Server/wwwroot
+          cp -R client/dist/client/browser/. Portfolio.Server/wwwroot/
+
+      # Framework-dependent win-x64, same as the live site (IIS in-process, Portfolio.Server.exe).
+      - name: Publish server (win-x64)
+        run: >-
+          dotnet publish Portfolio.Server/Portfolio.Server.csproj
+          -c Release -r win-x64 --self-contained false
+          -o "$RUNNER_TEMP/publish"
+
+      - name: Check the publish output
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/publish"
+          for f in Portfolio.Server.exe Portfolio.Server.dll web.config profile.json wwwroot/index.html; do
+            test -f "$f" || { echo "::error::publish output is missing $f"; exit 1; }
+          done
+          ls -la
+
+      # The published Portfolio.Server.dll is portable managed code, so it can run
+      # here with `dotnet`. cwd must be the publish folder (profile.json is read from cwd).
+      - name: Smoke test the published app
+        run: |
+          cd "$RUNNER_TEMP/publish"
+          ASPNETCORE_URLS=http://localhost:5126 ASPNETCORE_ENVIRONMENT=Production \
+            dotnet Portfolio.Server.dll > "$RUNNER_TEMP/app-smoke.log" 2>&1 &
+          APP_PID=$!
+          trap 'kill "$APP_PID" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 30); do
+            if curl -fs http://localhost:5126/api/profile > /dev/null; then break; fi
+            sleep 2
+          done
+          curl -fsS http://localhost:5126/api/profile -o "$RUNNER_TEMP/profile.json"
+          head -c 300 "$RUNNER_TEMP/profile.json"; echo
+          curl -fsS http://localhost:5126/ -o "$RUNNER_TEMP/index.html"
+          grep -q "<app-root" "$RUNNER_TEMP/index.html"
+          echo "UI served OK"
+
+      - name: Show app smoke log
+        if: failure()
+        run: cat "$RUNNER_TEMP/app-smoke.log" || true
+
+      # Package = the publish output (site/) + the deploy script. Logs/ is never
+      # part of it; the server's Logs/ and web.config are preserved by ci-deploy.ps1.
+      - name: Assemble deploy package
+        run: |
+          set -euo pipefail
+          mkdir -p package/site package/scripts
+          cp -R "$RUNNER_TEMP/publish/." package/site/
+          rm -rf package/site/Logs package/site/logs
+          cp scripts/ci-deploy.ps1 package/scripts/
+          echo "$GITHUB_SHA" > package/site/DEPLOYED_COMMIT
+          du -sh package
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: portfolio-${{ github.sha }}
+          path: package/
+          retention-days: 14
+          if-no-files-found: error
+
+  deploy:
+    name: Deploy to socha3 (IIS, ASP.NET Core in-process)
+    needs: build
+    # Only the real repo, only master (workflow_dispatch can target any branch),
+    # and only once the deploy target is configured.
+    if: >-
+      needs.build.outputs.deployable == 'true' &&
+      github.repository == 'bigmac529/Portfolio' &&
+      github.ref == 'refs/heads/master'
+    # Self-hosted runner on the Windows server; see README "Deploy".
+    runs-on: [self-hosted, windows, portfolio]
+    timeout-minutes: 30
+    environment:
+      name: production
+      url: https://socha3.com/
+    steps:
+      - name: Clean staging folder
+        shell: powershell
+        run: |
+          $staging = Join-Path $env:RUNNER_TEMP "portfolio-package"
+          if (Test-Path $staging) { Remove-Item $staging -Recurse -Force }
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: portfolio-${{ github.sha }}
+          path: ${{ runner.temp }}/portfolio-package
+
+      - name: Deploy, health check, roll back on failure
+        shell: powershell
+        env:
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+          DEPLOY_BACKUP_ROOT: ${{ vars.DEPLOY_BACKUP_ROOT }}
+        run: |
+          $staging = Join-Path $env:RUNNER_TEMP "portfolio-package"
+          $backupRoot = if ($env:DEPLOY_BACKUP_ROOT) { $env:DEPLOY_BACKUP_ROOT } else { "C:\WebApps\_deploy-backups\Portfolio" }
+          & (Join-Path $staging "scripts\ci-deploy.ps1") `
+            -Source (Join-Path $staging "site") `
+            -AppRoot $env:DEPLOY_PATH `
+            -BackupRoot $backupRoot `
+            -PublicUrl "https://socha3.com/" `
+            -Commit $env:GITHUB_SHA
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

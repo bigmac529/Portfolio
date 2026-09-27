@@ -52,6 +52,19 @@ npm start          # ng serve --port 4200, proxies /api → http://localhost:512
 
 Browse http://localhost:4200.
 
+## Deploy (GitHub Actions)
+
+Every merge to `master` deploys to https://socha3.com/ via `.github/workflows/deploy.yml` (same setup as GigaGarageSale):
+
+1. A GitHub-hosted runner builds the client (`npm ci`, `npm run build`), copies `client/dist/client/browser` into `Portfolio.Server/wwwroot`, runs `dotnet publish -c Release -r win-x64 --self-contained false`, and smoke-tests `/api/profile` and `/`.
+2. A self-hosted runner on the socha3 Windows server (labels `self-hosted, windows, portfolio`) runs `scripts/ci-deploy.ps1`: back up the site, take it offline with `app_offline.htm` (releases IIS file locks), mirror the publish output into the site folder (keeps `web.config`, `appsettings.Production.json` and `Logs\`), bring it back online, check https://socha3.com/api/profile and `/`, and roll back if the check fails.
+
+You can also run it by hand: **Actions → Deploy → Run workflow** (branch `master`). The site folder comes from the repository variable `DEPLOY_PATH`. Until it is set, runs build only.
+
+One-time server setup (runner, service account, `DEPLOY_PATH`), rollback and troubleshooting: [docs/DEPLOY.md](docs/DEPLOY.md). After a deploy, purge `https://socha3.com/` in Cloudflare if the old page is still showing.
+
+The manual steps below still work.
+
 ## Publish (IIS / win-x64, matching socha3.com)
 
 1. Build the SPA into the server `wwwroot`:
