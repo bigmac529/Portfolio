@@ -260,7 +260,10 @@ try {
 
 # ---------------------------------------------------------------- tidy up
 Write-Step "Pruning old backups (keeping $KeepBackups)"
+# Only the yyyyMMdd-HHmmss folders this script creates count toward -KeepBackups;
+# anything else in BackupRoot (e.g. manual-pre-first-deploy-*) is never touched.
 Get-ChildItem -LiteralPath $BackupRoot -Directory |
+  Where-Object { $_.Name -match '^\d{8}-\d{6}$' } |
   Sort-Object Name -Descending |
   Select-Object -Skip $KeepBackups |
   ForEach-Object { Write-Host "Removing $($_.FullName)"; Remove-Item -LiteralPath $_.FullName -Recurse -Force }

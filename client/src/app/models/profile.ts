@@ -1,6 +1,8 @@
 export interface LinkItem {
   label: string;
   url: string;
+  /** Short tooltip text for the hero button. Optional; the template falls back to a generic hint. */
+  description?: string | null;
 }
 
 export interface SkillItem {
