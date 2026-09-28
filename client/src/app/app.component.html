@@ -28,15 +28,37 @@
               <a class="underline decoration-white/30 hover:decoration-white/70" [href]="'mailto:' + p.email">{{ p.email }}</a>
             </p>
             <p class="mt-6 text-white/70 leading-relaxed"> {{ p.summary }} </p>
+            <!-- Hero buttons. Each has a tooltip (hover or keyboard focus, Esc hides it), linked with
+                 aria-describedby so screen readers announce it once as the description. The text
+                 comes from profile.json links[].description, with a generic fallback. -->
             <div class="mt-8 flex flex-wrap gap-3">
-              <a *ngFor="let link of p.links"
-                 class="rounded-2xl bg-white/10 ring-1 ring-white/15 px-5 py-3 font-medium
-                          hover:bg-white/15 transition focus:outline-none focus:ring-2 focus:ring-cyan-400/60"
-                 target="_blank"
-                 rel="noreferrer"
-                 [href]="link.url"> {{ link.label }} </a>
-              <a href="#experience"
-                 class="rounded-2xl bg-white/10 ring-1 ring-white/15 px-5 py-3 font-medium hover:bg-white/15 transition focus:outline-none focus:ring-2 focus:ring-cyan-400/60"> Experience </a>
+              <span *ngFor="let link of p.links; let i = index"
+                    class="group relative inline-flex"
+                    (mouseenter)="showTip($event)" (focusin)="showTip($event)" (keydown.escape)="hideTip($event)">
+                <a class="peer rounded-2xl bg-white/10 ring-1 ring-white/15 px-5 py-3 font-medium hover:bg-white/15 transition focus:outline-none focus:ring-2 focus:ring-cyan-400/60"
+                   target="_blank"
+                   rel="noreferrer"
+                   [href]="link.url"
+                   [attr.aria-describedby]="'hero-tip-' + i"> {{ link.label }} </a>
+                <span role="tooltip" [id]="'hero-tip-' + i"
+                      class="hero-tip invisible absolute bottom-full left-1/2 z-20 w-max max-w-[min(18rem,calc(100vw-2rem))] pb-2
+                          translate-x-[calc(var(--tip-shift,0px)_-_50%)] opacity-0 transition-[opacity,visibility] duration-150
+                          group-hover:visible group-hover:opacity-100 peer-focus-visible:visible peer-focus-visible:opacity-100">
+                  <span class="relative block rounded-xl bg-slate-900/95 px-3 py-2 text-center text-sm font-normal leading-snug text-white/90 ring-1 ring-white/15 shadow-lg shadow-black/40 backdrop-blur">{{ link.description || 'Opens ' + link.label + ' in a new tab' }}<span aria-hidden="true" class="hero-tip-arrow absolute -bottom-1 left-[calc(50%_-_var(--tip-shift,0px))] h-2 w-2 -translate-x-1/2 rotate-45 bg-slate-900"></span></span>
+                </span>
+              </span>
+              <span class="group relative inline-flex"
+                    (mouseenter)="showTip($event)" (focusin)="showTip($event)" (keydown.escape)="hideTip($event)">
+                <a class="peer rounded-2xl bg-white/10 ring-1 ring-white/15 px-5 py-3 font-medium hover:bg-white/15 transition focus:outline-none focus:ring-2 focus:ring-cyan-400/60"
+                   href="#experience"
+                   aria-describedby="hero-tip-experience"> Experience </a>
+                <span role="tooltip" id="hero-tip-experience"
+                      class="hero-tip invisible absolute bottom-full left-1/2 z-20 w-max max-w-[min(18rem,calc(100vw-2rem))] pb-2
+                          translate-x-[calc(var(--tip-shift,0px)_-_50%)] opacity-0 transition-[opacity,visibility] duration-150
+                          group-hover:visible group-hover:opacity-100 peer-focus-visible:visible peer-focus-visible:opacity-100">
+                  <span class="relative block rounded-xl bg-slate-900/95 px-3 py-2 text-center text-sm font-normal leading-snug text-white/90 ring-1 ring-white/15 shadow-lg shadow-black/40 backdrop-blur">Jump to my work experience<span aria-hidden="true" class="hero-tip-arrow absolute -bottom-1 left-[calc(50%_-_var(--tip-shift,0px))] h-2 w-2 -translate-x-1/2 rotate-45 bg-slate-900"></span></span>
+                </span>
+              </span>
             </div>
           </div>
 

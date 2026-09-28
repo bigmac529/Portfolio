@@ -7,23 +7,28 @@
   "links": [
     {
       "label": "LinkedIn",
-      "url": "https://www.linkedin.com/in/socha3/"
+      "url": "https://www.linkedin.com/in/socha3/",
+      "description": "View my LinkedIn profile"
     },
     {
       "label": "GitHub",
-      "url": "https://github.com/bigmac529"
+      "url": "https://github.com/bigmac529",
+      "description": "See my code on GitHub"
     },
     {
-        "label": "SnakeArcade",
-        "url": "https://snakearcade.socha3.com/"
+      "label": "SnakeArcade",
+      "url": "https://snakearcade.socha3.com/",
+      "description": "Play classic Snake in your browser, with an arcade leaderboard"
     },
     {
-        "label": "GigaGarageSale",
-        "url": "https://gigagaragesale.socha3.com/"
+      "label": "GigaGarageSale",
+      "url": "https://gigagaragesale.socha3.com/",
+      "description": "A marketplace for buying and selling used computer parts"
     },
     {
-        "label": "Socha Diff",
-        "url": "https://sochadiff.socha3.com/"
+      "label": "Socha Diff",
+      "url": "https://sochadiff.socha3.com/",
+      "description": "A Windows app that compares two folders and shows every difference"
     }
   ],
   "skills": [
